@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Label, TextInput, Spinner } from 'flowbite-react';
+import { Alert, Button, Label, TextInput, Spinner } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import OAuth from '../components/OAuth';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({})
@@ -93,6 +94,7 @@ export default function SignUp() {
               loading ? (<> <Spinner/> <span>Loading..</span></>) : ("Sign Up") 
             }
             </Button>
+            <OAuth/>
           </form>
           {errorMessage && <p className="bg-red-500 mt-2">{errorMessage}</p>}
           <div className="flex gap-2 text-sm mt-5">
@@ -101,6 +103,11 @@ export default function SignUp() {
               Sign In
             </Link>
           </div>
+          {errorMessage && (
+            <Alert className='mt-5' color='failure'>
+              {errorMessage}
+            </Alert>
+          )}
         </div>
       </div>
     </div>
