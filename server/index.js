@@ -28,6 +28,7 @@ mongoose.connect(process.env.CONNECT_LINK)
 
 app.use('/api', userRoutes)
 app.use('/api/user', authRoutes)
+app.use('/api/auth', authRoutes);
  
 
 app.listen(3000, ()=>{

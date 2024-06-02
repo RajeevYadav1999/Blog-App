@@ -8,6 +8,7 @@ import Header from './components/Header'
 import FooterL from './components/FooterL'
 import './App.css'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
 
@@ -18,12 +19,12 @@ function App() {
     <Routes>
     <Route path = "/" element= {<Home/>}/>
     <Route path = "/about" element= {<About/>}/>
-    <Route path = "/projects" element= {<Projects/>}/>
-    <Route path = "/dashboard" element= {<Dashboard/>}/>
     <Route path = "/sign-in" element= {<SignIn/>}/>
     <Route path = "/sign-up" element= {<SignUp/>}/>
-
-
+    <Route element={<PrivateRoute/>}>
+     <Route path = "/dashboard" element= {<Dashboard/>}/>
+    </Route>
+    <Route path = "/projects" element= {<Projects/>}/>
     </Routes>
     <FooterL/>
     </BrowserRouter>
