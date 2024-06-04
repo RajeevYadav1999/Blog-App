@@ -5,8 +5,11 @@ import userRoutes from "../server/routes/user.routes.js"
 import authRoutes from "./routes/auth.routes.js"
 import bodyparser from "body-parser";
 import cors from "cors"
+import cookieParser from "cookie-parser";
+
 dotenv.config();
 const app = express()
+app.use(cookieParser()); //extract cookie from browser
 
 app.use(bodyparser.json())
 app.use(cors())
@@ -27,7 +30,7 @@ mongoose.connect(process.env.CONNECT_LINK)
 })
 
 app.use('/api', userRoutes)
-app.use('/api/user', authRoutes)
+app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes);
  
 
